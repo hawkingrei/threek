@@ -9,7 +9,7 @@ install:
   - go get github.com/mattn/goveralls
 script:
   - godep restore
-  - make
+  - make test
 
 after_success:
   - $HOME/gopath/bin/goveralls -v -repotoken LhUNwwyOZBJbLDRI5z2a2Qtx1CJUUQaZh
