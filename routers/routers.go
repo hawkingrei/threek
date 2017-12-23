@@ -16,5 +16,11 @@ func Load(middleware ...gin.HandlerFunc) http.Handler {
 	{
 		version.GET("", server.GetVersion)
 	}
+	room := e.Group("/api/room")
+	{
+		//room.POST("", server.CreateRoom)
+		room.GET("", server.GetRoom)
+		//room.GET("/cancel", server.CancelRoom)
+	}
 	return e
 }

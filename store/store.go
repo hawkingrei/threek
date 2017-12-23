@@ -13,6 +13,9 @@ type Store interface {
 	CreateUser(username string)
 	HasUser(string) bool
 	CreateTable(models ...interface{})
+
+	CreateRoom() (*model.Room, error)
+	GetRoom(rid int) (*model.Room, error)
 	Close()
 }
 
@@ -26,4 +29,12 @@ func CreateUser(c context.Context, username string) {
 
 func HasUser(c context.Context, username string) bool {
 	return FromContext(c).HasUser(username)
+}
+
+func CreateRoom(c context.Context) (*model.Room, error) {
+	return FromContext(c).CreateRoom()
+}
+
+func GetRoom(c context.Context, rid int) (*model.Room, error) {
+	return FromContext(c).GetRoom(rid)
 }
