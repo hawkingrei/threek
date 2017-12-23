@@ -1,6 +1,8 @@
 package server
 
 import (
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/hawkingrei/threek/store"
 )
@@ -23,4 +25,20 @@ func CreateRoom(c *gin.Context) {
 		return
 	}
 	c.JSON(200, room)
+}
+
+func JoinRoom(c *gin.Context) {
+	strRid := c.Request.Header.Get("roomid")
+	username, _ := c.Get("user")
+	rid, err := strconv.ParseInt(strRid, 10, 64)
+	if err != nil {
+		c.String(500, "rid error. %s", err)
+		return
+	}
+	rm, err := store.JoinRoom(c, rid, username.(string))
+	if err != nil {
+		c.String(500, "Error fetching user. %s", err)
+		return
+	}
+	c.JSON(200, rm)
 }

@@ -16,6 +16,7 @@ type Store interface {
 
 	CreateRoom() (*model.Room, error)
 	GetRoom(rid int) (*model.Room, error)
+	JoinRoom(rid int64, username string) (*model.Room, error)
 	Close()
 }
 
@@ -37,4 +38,8 @@ func CreateRoom(c context.Context) (*model.Room, error) {
 
 func GetRoom(c context.Context, rid int) (*model.Room, error) {
 	return FromContext(c).GetRoom(rid)
+}
+
+func JoinRoom(c context.Context, rid int64, username string) (*model.Room, error) {
+	return FromContext(c).JoinRoom(rid, username)
 }
