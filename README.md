@@ -1,5 +1,7 @@
 # threek
 
+[![Build Status](https://travis-ci.org/hawkingrei/threek.svg?branch=master)](https://travis-ci.org/hawkingrei/threek)
+
 ## 游戏规则
 1、玩家共4名
 
