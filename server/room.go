@@ -15,3 +15,12 @@ func GetRoom(c *gin.Context) {
 	}
 	c.JSON(200, user)
 }
+
+func CreateRoom(c *gin.Context) {
+	room, err := store.CreateRoom(c)
+	if err != nil {
+		c.String(500, "Error fetching user. %s", err)
+		return
+	}
+	c.JSON(200, room)
+}

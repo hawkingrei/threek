@@ -18,7 +18,7 @@ func Load(middleware ...gin.HandlerFunc) http.Handler {
 	}
 	room := e.Group("/api/room")
 	{
-		//room.POST("", server.CreateRoom)
+		room.POST("", server.CreateRoom)
 		room.GET("", server.GetRoom)
 		//room.GET("/cancel", server.CancelRoom)
 	}
