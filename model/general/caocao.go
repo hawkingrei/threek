@@ -3,7 +3,7 @@ package general
 import "github.com/hawkingrei/threek/model"
 
 type Caocao struct {
-	g model.General
+	g model.general
 }
 
 func GenerateCaocao() (g Caocao) {

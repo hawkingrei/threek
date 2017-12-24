@@ -3,7 +3,7 @@ package general
 import "github.com/hawkingrei/threek/model"
 
 type Zhouyu struct {
-	g model.General
+	g model.general
 }
 
 func GenerateZhouyu() (g Zhouyu) {

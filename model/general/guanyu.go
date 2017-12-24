@@ -3,7 +3,7 @@ package general
 import "github.com/hawkingrei/threek/model"
 
 type Guanyu struct {
-	g model.General
+	g model.general
 }
 
 func GenerateGuanyu() (g Guanyu) {
