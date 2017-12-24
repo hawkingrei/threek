@@ -1,28 +1,45 @@
 package model
 
-type General struct {
+type general struct {
 	Blood             int
 	Name              string
-	Skill             func(g *General)
-	Additionaleffects []func(g General)
+	Shan              bool
+	Skill             func(g *general)
+	Additionaleffects []func(g general)
 }
 
-func (g *General) Wound() {
+func (g *general) Wound() {
 	g.Blood = g.Blood - 1
 }
 
-func (g *General) Restore() {
+func (g *general) Restore() {
 	g.Blood = g.Blood + 1
 }
 
-func (g *General) DoSkill(enemy *General) {
+func (g *general) DoSkill(enemy *general) {
 	g.Skill(enemy)
 }
 
-type generals interface {
+func (g *general) SetShan() {
+	g.Shan = true
+}
+
+func (g *general) CancelShan() {
+	g.Shan = false
+}
+
+func (g *general) IsShan() bool {
+	return g.Shan
+}
+
+type Generals interface {
 	// GetUser gets a user by unique Username.
-	DoSkil(enemy *General)
+	DoSkil(enemy *general)
 	Wound()
 	Restore()
-	DoAdditionalEffects(index int, generals interface{})
+	DoAdditionalEffects(index int, Generals interface{})
+
+	SetShan()
+	CancelShan()
+	IsShan() bool
 }
