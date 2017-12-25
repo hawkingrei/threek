@@ -8,8 +8,18 @@ import (
 	"github.com/hawkingrei/threek/model"
 )
 
+type GameStatic = int
+
+const (
+	LoadStatic GameStatic = iota       
+	LoyalistStatic         
+	QuislingStatic   
+	ThiefStatic            
+)
+
 type Fsm struct {
-	mu               sync.Mutex
+	mu sync.Mutex
+	Static           GameStatic
 	LordUsername     string
 	LoyalistUsername string
 	QuislingUsername string
