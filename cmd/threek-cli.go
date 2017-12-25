@@ -13,6 +13,7 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/gin-gonic/contrib/ginrus"
 	"github.com/hawkingrei/threek/conf"
+	"github.com/hawkingrei/threek/fsm"
 	"github.com/hawkingrei/threek/internal/version"
 	"github.com/hawkingrei/threek/model"
 	"github.com/hawkingrei/threek/routers"
@@ -97,6 +98,13 @@ func main() {
 	var g errgroup.Group
 	g.Go(func() error {
 		return serve.ListenAndServe()
+	})
+	var f fsm.Fsms
+	f.ExitChan = make(chan int, 1)
+	f.CommadnChan = make(chan fsm.Command, 100)
+	g.Go(func() error {
+		f.Start()
+		return nil
 	})
 	g.Wait()
 }
